@@ -1,7 +1,7 @@
 export interface Item{
     id: string,
     item: string,
-    check: boolean
+    checked: boolean
 }
 
 //this is our DM to decribe out items
