@@ -123,7 +123,7 @@ let bluey:Shark={
 //check to see if prop exists with narrowing
 
 const heySharks = (shark:Shark) =>{
-    if(SharedWorker.name){
+    if(shark.name){
         return `Hello ${shark.name.toUpperCase()}!`
     }
     return "Hello, anonymouse!!"
