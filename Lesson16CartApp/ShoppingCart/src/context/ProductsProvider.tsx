@@ -71,3 +71,5 @@ ReactElement =>{
 }
 
 export default ProductsContext
+
+//context helps us to manage global state!
