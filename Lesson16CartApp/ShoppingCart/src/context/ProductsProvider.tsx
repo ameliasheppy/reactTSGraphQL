@@ -1,5 +1,5 @@
 //make the product type
-import { ReactElement, createContext, useState, useEffect } from 'react'
+import { ReactElement, createContext, useState, } from 'react'
 
 export type ProductType = {
     //our type props will mirror the data.json
@@ -7,26 +7,26 @@ export type ProductType = {
     name: string,
     price:number
 }
-const initState: ProductType[] = []
+// const initState: ProductType[] = []
 //use the above for our initial state
 //we want to set our products to an empty array for now
-// const initState: ProductType[] = [
-//             {
-//                 "sku": "item0001",
-//                 "name": "Widget",
-//                 "price": 9.99
-//             },
-//             {
-//                 "sku": "item0002",
-//                 "name": "Premium Widget",
-//                 "price": 19.99
-//             },
-//             {
-//                 "sku": "item0003",
-//                 "name": "Deluxe Widget",
-//                 "price": 29.99
-//             }
-// ]
+const initState: ProductType[] = [
+            {
+                "sku": "item0001",
+                "name": "Widget",
+                "price": 9.99
+            },
+            {
+                "sku": "item0002",
+                "name": "Premium Widget",
+                "price": 19.99
+            },
+            {
+                "sku": "item0003",
+                "name": "Deluxe Widget",
+                "price": 29.99
+            }
+]
 //commenting the above out to grab the data with a fetch/promise
 
 
@@ -51,19 +51,19 @@ export const ProductsProvdier = ({ children }: ChildrenType):
 ReactElement =>{
     const [products, setProducts] = useState<ProductType[]>(initState)
     //give our useEffects an empty dep arr so that they will only load once, when the page loads
-    useEffect(() => {
-        const fetchProducts = async (): Promise<ProductType[]> =>{
-            const data = await fetch('http://localhost:3500/products').then(res =>{
-                return res.json()
-            }).catch(err => {
-                if (err instanceof Error) console.log(err.message);
-            })
-            return data
-        }
-        //we made the func in the useEffect so that it will only load once
-        //call the func!
-        fetchProducts().then(products => setProducts(products))
-    },[])
+    // useEffect(() => {
+    //     const fetchProducts = async (): Promise<ProductType[]> =>{
+    //         const data = await fetch('http://localhost:3500/products').then(res =>{
+    //             return res.json()
+    //         }).catch(err => {
+    //             if (err instanceof Error) console.log(err.message);
+    //         })
+    //         return data
+    //     }
+    //     //we made the func in the useEffect so that it will only load once
+    //     //call the func!
+    //     fetchProducts().then(products => setProducts(products))
+    // },[])
 
     return (
         <ProductsContext.Provider value={{ products }}>{children}</ProductsContext.Provider>
